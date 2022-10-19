@@ -10,6 +10,9 @@ uint64_t syscallDispatcher(uint64_t nr, uint64_t arg0, uint64_t arg1, uint64_t a
             return syscall_0((uint32_t)arg0);
 		case 1:
 			return syscall_1((uint32_t)arg0, (char *)arg1, (uint64_t)arg2);
+        case 2:
+            syscall_2();
+            return 0;
 	}
 	return -1;
 }
@@ -37,4 +40,8 @@ uint64_t syscall_1(uint32_t fd, const char *buff , uint64_t count){
     scr_setPenColor(color);
     scr_print(buff);
     return count;
+}
+
+void syscall_2(){
+    scr_clear();
 }
